@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Navigation from './Navigation';
 import { Globe2, Phone, Mail, ChevronRight, X, MessageCircle,} from 'lucide-react';
 
@@ -13,8 +15,7 @@ const Website = () => {
   };
 
   const handleWhatsApp = () => {
-    // Replace with actual WhatsApp number - remove any spaces or special characters
-    window.open('https://wa.me/+260969203066', '_blank');
+    window.open('https://wa.me/+260979720823', '_blank');
     setIsChatOpen(false);
   };
 
@@ -26,10 +27,13 @@ const Website = () => {
       {/* Hero Section with Background Image */}
       <div id="home" className="relative bg-black">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/image1.jpg"
             alt="Business operations"
-            className="w-full h-full object-cover opacity-50"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-50"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 py-24">
@@ -79,12 +83,14 @@ const Website = () => {
                 link: "/services/construction"
               }
             ].map((service, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-lg">
-              <a href={service.link}>  {/* Add this wrapper */}
-                <img
+              <div key={index} className="group relative h-64 overflow-hidden rounded-lg">
+              <Link href={service.link}>
+                <Image
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-64 object-cover transition-transform group-hover:scale-150"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform group-hover:scale-150"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90">
                   <div className="absolute bottom-0 p-6">
@@ -95,7 +101,7 @@ const Website = () => {
                     </button>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
             ))}
           </div>
@@ -182,15 +188,19 @@ const Website = () => {
               {
                 title: "Rare Earth Metals",
                 desc: "Essential rare earth elements for technology",
-                image: "rare_earth.jpg"
+                image: "/rare_earth.jpg"
               }
             ].map((product, index) => (
               <div key={index} className="bg-black rounded-lg overflow-hidden border border-orange-900 hover:border-orange-500 transition-colors">
-                <img
-                  src={product.image}  // Use the image path from the product object
-                  alt={product.title}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative h-48">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-yellow-500 mb-4">{product.title}</h3>
                   <p className="text-gray-400">{product.desc}</p>
@@ -218,7 +228,7 @@ const Website = () => {
                 </span>
               </div>
               <h5 className="text-3xl text-orange-500 mb-8 text-center">Mission & Vision</h5>
-              <span>Our mission is to achive the reputaion of a reliable goods and services delivery company. Our Vision is to deliver quality
+              <span>Our mission is to achieve the reputation of a reliable goods and services delivery company. Our Vision is to deliver quality
                 products and services at an affordable cost. 
                 </span>
 
@@ -258,10 +268,12 @@ const Website = () => {
                 <Globe2 className="text-yellow-500 mr-4" size={24} />
                 <span>Plot 1457/76/M off Shantumbu road Chalala, Lusaka, Zambia</span>
               </div>
-              <div className="flex items-center">
-                <Phone className="text-yellow-500 mr-4" size={24} />
-                <span>+260 (969) 203066</span>
-                <span>+260 (979) 720823</span>
+              <div className="flex items-start">
+                <Phone className="text-yellow-500 mr-4 mt-1 shrink-0" size={24} />
+                <div className="flex flex-col">
+                  <span>+260 (979) 720823</span>
+                  <span>+260 (977) 582767</span>
+                </div>
               </div>
               <div className="flex items-center">
                 <Mail className="text-yellow-500 mr-4" size={24} />

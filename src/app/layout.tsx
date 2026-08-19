@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Floodgates Symphony",
-  description: "Floodgates",
+  title: {
+    default: "Floodgates Symphony Company Ltd",
+    template: "%s | Floodgates Symphony Company Ltd",
+  },
+  description:
+    "Floodgates Symphony Company Ltd is a Zambian business solutions provider offering mining and trading, agriculture consultancy, construction, and general dealing services.",
+  openGraph: {
+    title: "Floodgates Symphony Company Ltd",
+    description:
+      "Your trusted partner in effective delivery of goods and services, mining, and agricultural solutions.",
+    siteName: "Floodgates Symphony Company Ltd",
+    locale: "en_ZM",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
         {children}
       </body>
