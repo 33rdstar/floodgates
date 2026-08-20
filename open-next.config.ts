@@ -1,3 +1,3 @@
-import { defineOpenNext } from "@opennextjs/cloudflare";
+import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 
-export default defineOpenNext();
+export default defineCloudflareConfig();
